@@ -1,3 +1,5 @@
+use std::ffi::os_str::Display;
+
 fn main() {
     let mut v: Vec<i32> = Vec::new();
 
@@ -32,4 +34,22 @@ fn main() {
     //v.push(6);
 
     //println!("The first element is: {first}");
+
+    //vectors are restriced to a single type
+    //combine vectors with enums to get around this
+
+    #[derive(Debug)]
+    enum SpreadsheetCells {
+        Int(i32),
+        Float(f64),
+        Text(String),
+    }
+
+    let row = vec![
+        SpreadsheetCells::Int(3),
+        SpreadsheetCells::Float(3.14),
+        SpreadsheetCells::Text(String::from("turtle")),
+    ];
+
+    println!("row = {row:?}");
 }
